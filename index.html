@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#350b1d" />
+
+  <title>Aishu's 2nd Love Anniversary</title>
+
+  <!-- CSS File -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <div class="glow" aria-hidden="true"></div>
+
+  <div class="heart-field" id="heartField" aria-hidden="true"></div>
+
+  <main class="app">
+
+    <!-- LOGIN PAGE -->
+    <section class="page active" id="loginPage">
+
+      <div class="little-heart" aria-hidden="true">
+        &hearts;
+      </div>
+
+      <div class="profile-photo">
+        <img
+          src="images/aishu-profile.jpeg"
+          alt="Aishu's profile photo"
+        />
+      </div>
+
+      <div class="eyebrow">
+        A private little surprise
+      </div>
+
+      <h1>
+        For <em>Aishu.</em>
+      </h1>
+
+      <p>
+        Enter the date where our beautiful story began.
+      </p>
+
+      <form class="date-form" id="dateForm">
+
+        <label for="anniversaryDate">
+          OUR ANNIVERSARY DATE
+        </label>
+
+        <input
+          id="anniversaryDate"
+          type="text"
+          inputmode="numeric"
+          maxlength="8"
+          placeholder="DD/MM/YY"
+          autocomplete="off"
+          required
+        />
+
+        <p
+          class="error"
+          id="dateError"
+          aria-live="polite"
+        ></p>
+
+        <button type="submit">
+          OPEN OUR STORY
+        </button>
+
+      </form>
+
+    </section>
+
+
+    <!-- PAGE 1 -->
+    <section class="page" id="page1">
+
+      <div class="eyebrow">
+        Chapter one
+      </div>
+
+      <h1>
+        Hey, <em>Aishu.</em>
+      </h1>
+
+      <p>
+        Two years of laughter, quiet comfort, beautiful memories,
+        and a love that keeps becoming more special with every day.
+      </p>
+
+      <div class="story-date">
+        05.10.2024
+        <span>The day our story began</span>
+      </div>
+
+      <button type="button" data-next>
+        BEGIN OUR CELEBRATION
+      </button>
+
+    </section>
+
+
+    <!-- PAGE 2 -->
+    <section class="page" id="page2">
+
+      <div class="eyebrow">
+        Two years of us
+      </div>
+
+      <h2>
+        Still choosing <em>you.</em>
+      </h2>
+
+      <p>
+        From our first little moments to all the dreams waiting ahead,
+        every version of us has been my favorite.
+      </p>
+
+      <div
+        class="anniversary-stats"
+        aria-label="Our two years together"
+      >
+
+        <div class="anniversary-stat">
+          <span class="icon">❤️</span>
+          <strong>2 Years</strong>
+          <small>Our love</small>
+        </div>
+
+        <div class="anniversary-stat">
+          <span class="icon">🗓️</span>
+          <strong>730 Days</strong>
+          <small>Together</small>
+        </div>
+
+        <div class="anniversary-stat">
+          <span class="icon">⏰</span>
+          <strong>17,520 Hours</strong>
+          <small>Of us</small>
+        </div>
+
+        <div class="anniversary-stat">
+          <span class="icon">⏳</span>
+          <strong>1,051,200 Minutes</strong>
+          <small>Memories</small>
+        </div>
+
+        <div class="anniversary-stat">
+          <span class="icon">💞</span>
+          <strong>63,072,000 Seconds</strong>
+          <small>With you</small>
+        </div>
+
+      </div>
+
+      <button type="button" data-next>
+        THE LITTLE THINGS
+      </button>
+
+    </section>
+
+
+    <!-- PAGE 3 -->
+    <section class="page" id="page3">
+
+      <div class="eyebrow">
+        Why I adore you
+      </div>
+
+      <h2>
+        The little things mean <em>everything.</em>
+      </h2>
+
+      <div class="reasons">
+
+        <div class="reason">
+          <b>01</b>
+          <span>
+            Your smile that makes every day lighter.
+          </span>
+        </div>
+
+        <div class="reason">
+          <b>02</b>
+          <span>
+            Our silly talks and inside jokes.
+          </span>
+        </div>
+
+        <div class="reason">
+          <b>03</b>
+          <span>
+            The calm, happy feeling of being with you.
+          </span>
+        </div>
+
+      </div>
+
+      <button type="button" data-next>
+        OUR FAVORITE MEMORY
+      </button>
+
+    </section>
+
+
+    <!-- PAGE 4 -->
+    <section class="page" id="page4">
+
+      <div class="eyebrow">
+        Where it all began
+      </div>
+
+      <h2>
+        One little message, a <em>whole new world.</em>
+      </h2>
+
+      <figure>
+
+        <img
+          class="photo chat-photo"
+          src="images/where-it-began.jpeg"
+          alt="A treasured first love message"
+        />
+
+        <figcaption>
+          The conversation that became our favorite story.
+        </figcaption>
+
+      </figure>
+
+      <button type="button" data-next>
+        OUR FAVORITE MEMORY
+      </button>
+
+    </section>
+
+
+    <!-- PAGE 5 -->
+    <section class="page" id="page5">
+
+      <div class="eyebrow">
+        A snapshot of our story
+      </div>
+
+      <h2>
+        My hand will always find <em>yours.</em>
+      </h2>
+
+      <figure>
+
+        <img
+          class="photo"
+          src="images/our-story.jpeg"
+          alt="A treasured memory of us holding hands"
+        />
+
+        <figcaption>
+          One small moment, one very big feeling.
+        </figcaption>
+
+      </figure>
+
+      <button type="button" data-next>
+        ONE LAST NOTE
+      </button>
+
+    </section>
+
+
+    <!-- PAGE 6 -->
+    <section class="page" id="page6">
+
+      <div class="little-heart" aria-hidden="true">
+        &hearts;
+      </div>
+
+      <div class="eyebrow">
+        Always and forever
+      </div>
+
+      <h2>
+        Happy 2nd Love Anniversary,
+        <em>
+          My dear Aishu I love you soo much 💋.
+        </em>
+      </h2>
+
+      <p>
+        Thank you for being my favorite person,
+        my happiest place, and my most beautiful chapter.
+      </p>
+
+      <button type="button" id="celebrateButton">
+        CELEBRATE OUR LOVE
+      </button>
+
+      <p
+        class="final-note"
+        id="finalNote"
+      >
+        Two years down, forever to go.
+        I love you, Aishu💋.
+      </p>
+
+    </section>
+
+  </main>
+
+
+  <!-- JavaScript File -->
+  <script src="script.js"></script>
+
+</body>
+</html>

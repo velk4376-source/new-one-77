@@ -1,0 +1,686 @@
+:root {
+  --wine: #350b1d;
+  --rose: #e45b7d;
+  --blush: #ffe9e4;
+  --gold: #f3ca80;
+  --ink: #fff8f3;
+  --muted: #f5cbd2;
+  --line: rgba(255, 228, 215, 0.32);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  color: var(--ink);
+  background: var(--wine);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+
+/* Background Glow */
+
+.glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      115deg,
+      rgba(228, 91, 125, 0.18),
+      transparent 46%
+    ),
+    linear-gradient(
+      300deg,
+      rgba(243, 202, 128, 0.13),
+      transparent 42%
+    );
+}
+
+
+/* Falling Hearts */
+
+.heart-field {
+  position: fixed;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.heart {
+  position: absolute;
+  top: -32px;
+
+  width: 17px;
+  height: 17px;
+
+  border-radius: 3px;
+
+  background: #ed6b89;
+
+  box-shadow:
+    inset -4px -5px 6px rgba(95, 0, 30, 0.42),
+    inset 3px 3px 5px rgba(255, 255, 255, 0.6),
+    5px 8px 12px rgba(13, 0, 6, 0.35);
+
+  transform: rotate(45deg);
+
+  animation:
+    fall var(--duration)
+    linear forwards;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 50%;
+
+  background: inherit;
+
+  box-shadow: inherit;
+}
+
+.heart::before {
+  left: -50%;
+}
+
+.heart::after {
+  top: -50%;
+}
+
+
+@keyframes fall {
+
+  from {
+    transform:
+      translate3d(0, -24px, 0)
+      rotate(45deg)
+      scale(0.7);
+
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.95;
+  }
+
+  to {
+    transform:
+      translate3d(var(--drift), 110vh, 0)
+      rotate(405deg)
+      scale(1.2);
+
+    opacity: 0;
+  }
+}
+
+
+/* Main App */
+
+.app {
+  position: relative;
+  z-index: 2;
+
+  display: grid;
+  place-items: center;
+
+  min-height: 100vh;
+
+  padding: 28px 18px;
+}
+
+
+/* Pages */
+
+.page {
+  display: none;
+
+  width: min(460px, 100%);
+  min-height: 550px;
+
+  padding: 40px 34px;
+
+  border: 1px solid var(--line);
+  border-radius: 8px;
+
+  background: rgba(81, 17, 42, 0.82);
+
+  box-shadow:
+    0 24px 70px rgba(15, 0, 8, 0.5);
+
+  text-align: center;
+
+  animation:
+    arrive 0.55s ease both;
+}
+
+.page.active {
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+@keyframes arrive {
+
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Text */
+
+.eyebrow {
+  margin-bottom: 14px;
+
+  color: var(--gold);
+
+  font:
+    700 0.68rem/1
+    Arial,
+    sans-serif;
+
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+h1,
+h2 {
+  margin: 0;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 9vw, 3.8rem);
+  line-height: 1.02;
+}
+
+h2 {
+  color: var(--gold);
+
+  font-size: clamp(2rem, 7vw, 2.8rem);
+  line-height: 1.08;
+}
+
+h1 em,
+h2 em {
+  color: #ffb7c7;
+  font-style: italic;
+}
+
+p {
+  margin: 20px 0 0;
+
+  color: var(--blush);
+
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+
+/* Date Form */
+
+.date-form {
+  display: grid;
+  gap: 10px;
+
+  width: min(320px, 100%);
+
+  margin: 28px auto 0;
+
+  text-align: left;
+}
+
+.date-form label {
+  color: var(--gold);
+
+  font:
+    700 0.68rem/1
+    Arial,
+    sans-serif;
+
+  letter-spacing: 0.1em;
+}
+
+.date-form input {
+  width: 100%;
+
+  padding: 14px 15px;
+
+  border: 1px solid var(--line);
+  border-radius: 4px;
+
+  outline: none;
+
+  background: rgba(255, 248, 243, 0.1);
+
+  color: var(--ink);
+
+  font:
+    600 1rem
+    Arial,
+    sans-serif;
+
+  letter-spacing: 0.08em;
+}
+
+.date-form input::placeholder {
+  color: #e7a9b6;
+  letter-spacing: 0.03em;
+}
+
+.date-form input:focus {
+  border-color: var(--gold);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(243, 202, 128, 0.15);
+}
+
+
+/* Error */
+
+.error {
+  min-height: 19px;
+
+  margin: 0;
+
+  color: #ffc5d1;
+
+  font:
+    0.8rem/1.4
+    Arial,
+    sans-serif;
+
+  text-align: center;
+}
+
+
+/* Buttons */
+
+button {
+  width: 100%;
+
+  margin-top: 24px;
+
+  padding: 14px 18px;
+
+  border: 1px solid var(--gold);
+  border-radius: 4px;
+
+  background: var(--rose);
+
+  color: #fffaf6;
+
+  cursor: pointer;
+
+  font:
+    700 0.76rem/1
+    Arial,
+    sans-serif;
+
+  letter-spacing: 0.08em;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+
+  background: var(--gold);
+  color: var(--wine);
+}
+
+button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+
+/* Heart */
+
+.little-heart {
+  color: var(--rose);
+
+  font-size: 2rem;
+
+  line-height: 1;
+}
+
+
+/* Profile Photo */
+
+.profile-photo {
+  width: 86px;
+  height: 86px;
+
+  margin: 0 auto 18px;
+
+  overflow: hidden;
+
+  border: 3px solid var(--gold);
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 0 6px rgba(228, 91, 125, 0.2),
+    0 10px 24px rgba(15, 0, 8, 0.42);
+}
+
+.profile-photo img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: 48% 55%;
+}
+
+
+/* Story Date */
+
+.story-date {
+  margin-top: 28px;
+
+  padding: 16px 0;
+
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+
+  color: var(--gold);
+
+  font:
+    700 0.78rem/1.6
+    Arial,
+    sans-serif;
+
+  letter-spacing: 0.08em;
+}
+
+.story-date span {
+  display: block;
+
+  margin-top: 4px;
+
+  color: var(--muted);
+
+  font-size: 0.75rem;
+
+  letter-spacing: 0.04em;
+}
+
+
+/* Anniversary Stats */
+
+.anniversary-stats {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 9px;
+
+  margin-top: 24px;
+}
+
+.anniversary-stat {
+  min-height: 82px;
+
+  padding: 12px 6px;
+
+  border: 1px solid rgba(243, 202, 128, 0.58);
+
+  border-radius: 6px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(228, 91, 125, 0.32),
+      rgba(255, 248, 243, 0.08)
+    );
+
+  box-shadow:
+    0 8px 18px
+    rgba(15, 0, 8, 0.25);
+}
+
+.anniversary-stat .icon {
+  display: block;
+
+  margin-bottom: 7px;
+
+  font-size: 1.1rem;
+
+  line-height: 1;
+}
+
+.anniversary-stat strong {
+  display: block;
+
+  color: var(--gold);
+
+  font:
+    700 0.8rem/1.15
+    Arial,
+    sans-serif;
+
+  letter-spacing: 0.02em;
+}
+
+.anniversary-stat small {
+  display: block;
+
+  margin-top: 4px;
+
+  color: var(--blush);
+
+  font:
+    0.62rem/1
+    Arial,
+    sans-serif;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+}
+
+
+/* Reasons */
+
+.reasons {
+  margin-top: 26px;
+
+  border-top: 1px solid var(--line);
+
+  text-align: left;
+}
+
+.reason {
+  display: flex;
+
+  gap: 14px;
+
+  align-items: baseline;
+
+  padding: 16px 0;
+
+  border-bottom: 1px solid var(--line);
+}
+
+.reason b {
+  color: var(--gold);
+
+  font:
+    700 0.72rem
+    Arial,
+    sans-serif;
+
+  letter-spacing: 0.08em;
+}
+
+.reason span {
+  color: var(--blush);
+
+  font-size: 0.98rem;
+}
+
+
+/* Photos */
+
+figure {
+  margin: 24px auto 0;
+}
+
+.photo {
+  display: block;
+
+  width: min(255px, 68vw);
+
+  aspect-ratio: 4 / 5;
+
+  object-fit: cover;
+
+  object-position: center 64%;
+
+  border: 4px solid var(--gold);
+
+  border-radius: 7px;
+
+  box-shadow:
+    0 16px 30px
+    rgba(13, 0, 6, 0.45);
+
+  animation:
+    photo-float 4.6s ease-in-out infinite;
+}
+
+.photo.chat-photo {
+  width: min(190px, 52vw);
+
+  aspect-ratio: 9 / 16;
+
+  object-position: center;
+}
+
+figcaption {
+  margin-top: 12px;
+
+  color: var(--muted);
+
+  font-size: 0.86rem;
+
+  font-style: italic;
+}
+
+
+@keyframes photo-float {
+
+  50% {
+    transform:
+      translateY(-8px)
+      rotate(1deg);
+  }
+}
+
+
+/* Final Note */
+
+.final-note {
+  max-height: 0;
+
+  margin: 0;
+
+  overflow: hidden;
+
+  opacity: 0;
+
+  transition: all 0.45s ease;
+}
+
+.final-note.show {
+  max-height: 130px;
+
+  margin-top: 22px;
+
+  opacity: 1;
+}
+
+
+/* Mobile */
+
+@media (max-width: 430px) {
+
+  .app {
+    align-items: start;
+
+    padding: 16px 12px;
+  }
+
+  .page {
+    min-height: calc(100svh - 32px);
+
+    padding: 32px 24px;
+  }
+
+  .photo {
+    width: min(220px, 62vw);
+  }
+
+  .anniversary-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .anniversary-stat:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+
+/* Small Height Screens */
+
+@media (max-height: 670px) {
+
+  .page {
+    min-height: 0;
+
+    padding-block: 27px;
+  }
+
+  .photo {
+    width: min(165px, 45vw);
+  }
+
+  p {
+    margin-top: 14px;
+
+    line-height: 1.55;
+  }
+
+  button {
+    margin-top: 18px;
+  }
+}
